@@ -533,10 +533,7 @@ class AccountMoveLine(models.Model):
                     index = term_lines._ids.index(line.id) if line in term_lines else len(term_lines)
 
                     name = _('%(name)s installment #%(number)s', name=name if name else '', number=index + 1).lstrip()
-                if n_terms > 1 or not line.name or line._origin.name == line._origin.move_id.payment_reference or (
-                    line._origin.move_id.payment_reference and line._origin.move_id.ref
-                    and line._origin.name == f'{line._origin.move_id.ref} - {line._origin.move_id.payment_reference}'
-                ):
+                if name:
                     line.name = name
             if not line.product_id or line.display_type in ('line_section', 'line_note'):
                 continue
@@ -3508,7 +3505,7 @@ class AccountMoveLine(models.Model):
         return res
 
     def _get_journal_items_full_name(self, name, display_name):
-        return name if not display_name or display_name in name else f"{display_name} {name}"
+        return name if not display_name or display_name in name else f"{display_name}\n{name}"
 
     def _check_edi_line_tax_required(self):
         return self.product_id.type != 'combo'

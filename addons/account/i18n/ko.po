@@ -9,12 +9,13 @@
 # Wil Odoo, 2025
 # Sarah Park, 2025
 # "Kwanghee Park (kwpa)" <kwpa@odoo.com>, 2025.
+# Weblate <noreply-mt-weblate@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-28 18:36+0000\n"
-"PO-Revision-Date: 2025-11-19 05:51+0000\n"
+"POT-Creation-Date: 2025-12-12 18:36+0000\n"
+"PO-Revision-Date: 2025-12-10 11:18+0000\n"
 "Last-Translator: \"Kwanghee Park (kwpa)\" <kwpa@odoo.com>\n"
 "Language-Team: Korean <https://translate.odoo.com/projects/odoo-18/account/"
 "ko/>\n"
@@ -23,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.12.2\n"
+"X-Generator: Weblate 5.14.3\n"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_journal__type
@@ -1894,6 +1895,14 @@ msgid "Account Chart Template"
 msgstr "계정과목표 서식"
 
 #. module: account
+#. odoo-python
+#: code:addons/account/models/account_code_mapping.py:0
+msgid ""
+"Account Code Mapping cannot be accessed directly. It is designed to be used "
+"only through the Chart of Accounts."
+msgstr ""
+
+#. module: account
 #: model:ir.model.fields,field_description:account.field_account_report_line__account_codes_formula
 msgid "Account Codes Formula Shortcut"
 msgstr "계정 코드 수식 바로가기"
@@ -3308,6 +3317,11 @@ msgstr "첨부 파일 수"
 #: model:ir.model.fields,field_description:account.field_account_payment__attachment_ids
 msgid "Attachments"
 msgstr "첨부 파일"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_send_wizard__attachments_not_supported
+msgid "Attachments Not Supported"
+msgstr "첨부 파일이 지원되지 않습니다"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_mail_mail__account_audit_log_activated
@@ -6451,6 +6465,11 @@ msgid "Display Amount"
 msgstr "표시 금액"
 
 #. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_send_wizard__display_attachments_widget
+msgid "Display Attachments Widget"
+msgstr "첨부 파일 위젯 표시"
+
+#. module: account
 #: model:ir.model.fields,field_description:account.field_account_payment_term_line__display_days_next_month
 msgid "Display Days Next Month"
 msgstr "다음 달 표시일"
@@ -8186,6 +8205,11 @@ msgid "How total tax amount is computed in orders and invoices"
 msgstr "발주서 및 청구서에서 세금 총액을 계산하는 방법입니다."
 
 #. module: account
+#: model_terms:ir.ui.view,arch_db:account.report_invoice_document
+msgid "ICE:"
+msgstr "ICE:"
+
+#. module: account
 #: model:ir.model.fields,field_description:account.field_account_account__id
 #: model:ir.model.fields,field_description:account.field_account_account_tag__id
 #: model:ir.model.fields,field_description:account.field_account_accrued_orders_wizard__id
@@ -9024,11 +9048,6 @@ msgstr "청구 대금 온라인 결제"
 #: model:ir.model.fields,field_description:account.field_account_move__invoice_outstanding_credits_debits_widget
 msgid "Invoice Outstanding Credits Debits Widget"
 msgstr "청구서 미처리내역 대변 차변 위젯"
-
-#. module: account
-#: model:ir.actions.report,name:account.account_invoices
-msgid "Invoice PDF"
-msgstr "청구서 PDF"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement_line__invoice_partner_display_name
@@ -11692,6 +11711,7 @@ msgstr "PAY001"
 #. module: account
 #. odoo-python
 #: code:addons/account/models/account_move.py:0
+#: model:ir.actions.report,name:account.account_invoices
 msgid "PDF"
 msgstr "PDF"
 
@@ -16697,7 +16717,7 @@ msgstr "해당일을 포함하여 선택한 날짜까지 반복 발행됩니다,
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
 msgid "This setting locks once a journal entry is created."
-msgstr ""
+msgstr "이 설정은 전표 항목이 생성될 경우 잠겨집니다."
 
 #. module: account
 #. odoo-python
@@ -19331,6 +19351,9 @@ msgid ""
 "{{ object.company_id.name }} Payment Receipt (Ref {{ object.name or 'n/a' }})"
 msgstr ""
 "{{ object.company_id.name }} 결제 영수증 (참조 {{ object.name or 'n/a' }})"
+
+#~ msgid "Invoice PDF"
+#~ msgstr "청구서 PDF"
 
 #~ msgid "This setting cannot be changed after an invoice is created."
 #~ msgstr "이 설정은 청구서가 생성된 후에는 변경할 수 없습니다."

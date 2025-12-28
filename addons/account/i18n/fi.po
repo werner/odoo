@@ -51,12 +51,13 @@
 # Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>, 2025
 # "Jessica Tuulia Sade Jäkärä (jtsj)" <jtsj@odoo.com>, 2025.
 # Weblate <noreply-mt-weblate@weblate.org>, 2025.
+# Saara Hakanen <sahak@odoo.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-28 18:36+0000\n"
-"PO-Revision-Date: 2025-11-25 09:49+0000\n"
+"POT-Creation-Date: 2025-12-12 18:36+0000\n"
+"PO-Revision-Date: 2025-12-26 14:00+0000\n"
 "Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
 "Language-Team: Finnish <https://translate.odoo.com/projects/odoo-18/account/"
 "fi/>\n"
@@ -65,7 +66,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12.2\n"
+"X-Generator: Weblate 5.14.3\n"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_journal__type
@@ -1953,6 +1954,16 @@ msgid "Account Chart Template"
 msgstr "Tilikarttamalli"
 
 #. module: account
+#. odoo-python
+#: code:addons/account/models/account_code_mapping.py:0
+msgid ""
+"Account Code Mapping cannot be accessed directly. It is designed to be used "
+"only through the Chart of Accounts."
+msgstr ""
+"Tilikoodien vastaavuutta ei voi käyttää suoraan. Se on suunniteltu "
+"käytettäväksi vain tilikartan kautta."
+
+#. module: account
 #: model:ir.model.fields,field_description:account.field_account_report_line__account_codes_formula
 msgid "Account Codes Formula Shortcut"
 msgstr "Tilikoodien kaavan pikakuvake"
@@ -2897,7 +2908,7 @@ msgstr "Aina (laskun yhteydessä)"
 #: model:ir.model.fields,field_description:account.field_account_bank_statement_line__always_tax_exigible
 #: model:ir.model.fields,field_description:account.field_account_move__always_tax_exigible
 msgid "Always Tax Exigible"
-msgstr "Aina verovapaita"
+msgstr "Aina verotettava"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_partial_reconcile__amount
@@ -3397,6 +3408,11 @@ msgstr "Liitteiden määrä"
 #: model:ir.model.fields,field_description:account.field_account_payment__attachment_ids
 msgid "Attachments"
 msgstr "Liitteet"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_send_wizard__attachments_not_supported
+msgid "Attachments Not Supported"
+msgstr "Liitteitä ei tueta"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_mail_mail__account_audit_log_activated
@@ -6563,6 +6579,11 @@ msgid "Display Amount"
 msgstr "Näytä summa"
 
 #. module: account
+#: model:ir.model.fields,field_description:account.field_account_move_send_wizard__display_attachments_widget
+msgid "Display Attachments Widget"
+msgstr "Näytä liitetiedostot -widget"
+
+#. module: account
 #: model:ir.model.fields,field_description:account.field_account_payment_term_line__display_days_next_month
 msgid "Display Days Next Month"
 msgstr "Näytä päivät ensi kuussa"
@@ -8326,6 +8347,11 @@ msgid "How total tax amount is computed in orders and invoices"
 msgstr "Kuinka kokonaisveron määrä lasketaan tilauksissa ja laskuissa"
 
 #. module: account
+#: model_terms:ir.ui.view,arch_db:account.report_invoice_document
+msgid "ICE:"
+msgstr "ICE:"
+
+#. module: account
 #: model:ir.model.fields,field_description:account.field_account_account__id
 #: model:ir.model.fields,field_description:account.field_account_account_tag__id
 #: model:ir.model.fields,field_description:account.field_account_accrued_orders_wizard__id
@@ -9195,11 +9221,6 @@ msgstr "Laskun verkkomaksu"
 #: model:ir.model.fields,field_description:account.field_account_move__invoice_outstanding_credits_debits_widget
 msgid "Invoice Outstanding Credits Debits Widget"
 msgstr "Avoimet kredit debet työkalu"
-
-#. module: account
-#: model:ir.actions.report,name:account.account_invoices
-msgid "Invoice PDF"
-msgstr "Laskun PDF"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement_line__invoice_partner_display_name
@@ -11889,6 +11910,7 @@ msgstr "PAY001"
 #. module: account
 #. odoo-python
 #: code:addons/account/models/account_move.py:0
+#: model:ir.actions.report,name:account.account_invoices
 msgid "PDF"
 msgstr "PDF"
 
@@ -15208,8 +15230,8 @@ msgid ""
 "Taxes exigible on payment and on invoice cannot be mixed on the same journal "
 "item if they share some tag."
 msgstr ""
-"Maksun ja laskun yhteydessä kannettavia veroja ei voida sekoittaa samaan "
-"päiväkirjan nimikkeeseen, jos niillä on yhteinen tunniste."
+"Samaan päiväkirjamerkintään ei voi yhdistää maksun ja laskun perusteella "
+"perittäviä veroja, jos niillä on sama tunniste."
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_res_company__display_invoice_tax_company_currency
@@ -16969,7 +16991,7 @@ msgstr "Tämä toistuva tapahtuma kirjataan ​​tähän päivään saakka."
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
 msgid "This setting locks once a journal entry is created."
-msgstr ""
+msgstr "Tämä asetus lukittuu, kun päiväkirjamerkintä on luotu."
 
 #. module: account
 #. odoo-python
@@ -19683,6 +19705,9 @@ msgid ""
 "{{ object.company_id.name }} Payment Receipt (Ref {{ object.name or 'n/a' }})"
 msgstr ""
 "{{ object.company_id.name }} Maksukuitti (viite {{ object.name or 'n/a' }})"
+
+#~ msgid "Invoice PDF"
+#~ msgstr "Laskun PDF"
 
 #~ msgid "This setting cannot be changed after an invoice is created."
 #~ msgstr "Tätä asetusta ei voi muuttaa laskun luomisen jälkeen."
