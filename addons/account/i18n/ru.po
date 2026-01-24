@@ -13,15 +13,15 @@
 # Thomas Becquevort, 2025
 # Wil Odoo, 2025
 # Anastasiia Koroleva, 2025
-# "Anastasiia Koroleva (koan)" <koan@odoo.com>, 2025.
+# "Anastasiia Koroleva (koan)" <koan@odoo.com>, 2025, 2026.
 # Ilya Rozhkov <ceo@docsly.kz>, 2025.
 # Weblate <noreply-mt-weblate@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:36+0000\n"
-"PO-Revision-Date: 2025-12-26 15:41+0000\n"
+"POT-Creation-Date: 2026-01-15 18:38+0000\n"
+"PO-Revision-Date: 2026-01-24 09:14+0000\n"
 "Last-Translator: \"Anastasiia Koroleva (koan)\" <koan@odoo.com>\n"
 "Language-Team: Russian <https://translate.odoo.com/projects/odoo-18/account/"
 "ru/>\n"
@@ -29,9 +29,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
-"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 "
+": n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Generator: Weblate 5.14.3\n"
 
 #. module: account
@@ -753,8 +753,8 @@ msgstr ""
 "    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
 "        Здравствуйте,\n"
 "        <t t-if=\"object.partner_id.parent_id\">\n"
-"            <t t-out=\"object.partner_id.name or ''\">Брэндон Фримен</t> (<t "
-"t-out=\"object.partner_id.parent_id.name or ''\">Azure Interior</t>)!\n"
+"            <t t-out=\"object.partner_id.name or ''\">Брэндон Фримен</t> "
+"(<t t-out=\"object.partner_id.parent_id.name or ''\">Azure Interior</t>)!\n"
 "        </t>\n"
 "        <t t-else=\"\">\n"
 "            <t t-out=\"object.partner_id.name or ''\">Брэндон Фримен</t>!\n"
@@ -762,19 +762,17 @@ msgstr ""
 "        <br/><br/>\n"
 "        Во вложении вы найдете ваш счет\n"
 "        <t t-if=\"object.name\">\n"
-"            счет <span style=\"font-weight:bold;\" t-out=\"object.name or "
-"''\">INV/2021/05/0005</span>\n"
+"            счет <span style=\"font-weight:bold;\" t-out=\"object.name or ''"
+"\">INV/2021/05/0005</span>\n"
 "        </t>\n"
 "        <t t-else=\"\">\n"
 "            счет\n"
 "        </t>\n"
 "        <t t-if=\"object.invoice_origin\">\n"
-"            (со ссылкой: <t t-out=\"object.invoice_origin or ''\">SUB003</"
-"t>)\n"
+"            (номер: <t t-out=\"object.invoice_origin or ''\">SUB003</t>)\n"
 "        </t>\n"
-"        на сумму <span style=\"font-weight:bold;\" t-"
-"out=\"format_amount(object.amount_total, object.currency_id) or ''\">143 "
-"750,00 $</span>\n"
+"        на сумму <span style=\"font-weight:bold;\" t-out=\"format_amount"
+"(object.amount_total, object.currency_id) or ''\">143 750,00 $</span>\n"
 "        от <t t-out=\"object.company_id.name or ''\">YourCompany</t>.\n"
 "        <t t-if=\"object.payment_state in ('paid', 'in_payment')\">\n"
 "            Оплата по этому счету уже произведена.\n"
@@ -786,23 +784,24 @@ msgstr ""
 "                Пожалуйста, используйте следующую информацию для оплаты: "
 "<strong t-out=\"object.payment_reference or ''\">INV/2021/05/0005</strong>\n"
 "                <t t-if=\"object.partner_bank_id\">\n"
-"                    на счет <strong t-"
-"out=\"object.partner_bank_id.acc_number\"/>\n"
+"                    на счет <strong t-out="
+"\"object.partner_bank_id.acc_number\"/>\n"
 "                </t>\n"
 "                .\n"
 "            </t>\n"
 "        </t>\n"
-"        <t t-if=\"hasattr(object, 'timesheet_count') and "
-"object.timesheet_count\">\n"
+"        <t t-if="
+"\"hasattr(object, 'timesheet_count') and object.timesheet_count\">\n"
 "            <br/><br/>\n"
 "            P.S.: Вы можете просмотреть свои табели учета рабочего времени "
-"<a t-att-href=\"'/my/timesheets?search_in=invoice&amp;search=%s' % "
-"object.name\">на портале.</a>\n"
+"<a t-att-href="
+"\"'/my/timesheets?search_in=invoice&amp;search=%s' % object.name\">на "
+"портале.</a>\n"
 "        </t>\n"
 "        <br/><br/>\n"
 "        Не стесняйтесь обращаться к нам, если у вас возникнут вопросы.\n"
-"        <t t-if=\"not is_html_empty(object.invoice_user_id.signature)\" data-"
-"o-mail-quote-container=\"1\">\n"
+"        <t t-if=\"not is_html_empty(object.invoice_user_id.signature)\" "
+"data-o-mail-quote-container=\"1\">\n"
 "            <br/><br/>\n"
 "            <t t-out=\"object.invoice_user_id.signature or ''\" data-o-mail-"
 "quote=\"1\">--<br data-o-mail-quote=\"1\"/>Митчелл Админ</t>\n"
@@ -1933,8 +1932,8 @@ msgid ""
 "Account Code Mapping cannot be accessed directly. It is designed to be used "
 "only through the Chart of Accounts."
 msgstr ""
-"Доступ к сопоставлению кодов счетов напрямую невозможен. Оно предназначено "
-"для использования только через план счетов."
+"Прямой доступ к сопоставлению счетов ограничен. Настройка выполняется "
+"непосредственно в Плане счетов."
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_report_line__account_codes_formula
@@ -9189,6 +9188,11 @@ msgid "Invoice Outstanding Credits Debits Widget"
 msgstr "Виджет просроченных кредитов и дебетов по счёту-фактуре"
 
 #. module: account
+#: model:ir.actions.report,name:account.account_invoices
+msgid "Invoice PDF"
+msgstr " Счёт-фактура PDF"
+
+#. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement_line__invoice_partner_display_name
 #: model:ir.model.fields,field_description:account.field_account_move__invoice_partner_display_name
 msgid "Invoice Partner Display Name"
@@ -11882,7 +11886,6 @@ msgstr "PAY001"
 #. module: account
 #. odoo-python
 #: code:addons/account/models/account_move.py:0
-#: model:ir.actions.report,name:account.account_invoices
 msgid "PDF"
 msgstr "PDF"
 
@@ -18919,6 +18922,12 @@ msgstr ""
 
 #. module: account
 #. odoo-python
+#: code:addons/account/models/account_move.py:0
+msgid "You cannot post an entry with an archived analytic account: %s"
+msgstr "Вы не можете провести запись с архивированным аналитическим счетом: %s"
+
+#. module: account
+#. odoo-python
 #: code:addons/account/models/res_currency.py:0
 msgid ""
 "You cannot reduce the number of decimal places of a currency which has "
@@ -19719,8 +19728,11 @@ msgstr ""
 "{{ object.company_id.name }} Квитанция об оплате (Ссылка {{ object.name or "
 "'n/a' }})"
 
-#~ msgid "Invoice PDF"
-#~ msgstr " Счёт-фактура PDF"
+#~ msgid ""
+#~ "The entry '%(move_name)s (id %(move_id)s) is using accounts from a "
+#~ "different company."
+#~ msgstr ""
+#~ "Запись «%(move_name)s (id %(move_id)s)» использует счета другой компании."
 
 #~ msgid "This setting cannot be changed after an invoice is created."
 #~ msgstr "Эту настройку нельзя изменить после создания счета."

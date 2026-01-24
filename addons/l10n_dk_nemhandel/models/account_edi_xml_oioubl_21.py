@@ -19,6 +19,13 @@ UBL_TO_OIOUBL_TAX_CATEGORY_ID_MAPPING = {
     'M': 'ZeroRated',
 }
 
+SCHEME_ID_MAPPING = {
+    '0088': 'GLN',
+    '0184': 'DK:CVR',
+    '9918': 'IBAN',
+    '0198': 'DK:SE',
+}
+
 
 def format_vat_number(partner, vat):
     vat = (vat or '').replace(' ', '')
@@ -137,25 +144,26 @@ class AccountEdiXmlOIOUBL21(models.AbstractModel):
                 'schemeID': 'DK:CVR' if vat[:2] == 'DK' else 'ZZZ'
             },
         })
-        party_node['cac:PartyTaxScheme'].update({
-            # Only DK:SE for PartyTaxScheme https://oioubl21.oioubl.dk/Classes/da/PartyTaxScheme.html
-            'cbc:CompanyID': {
-                '_text': vat,
-                'schemeID': 'DK:SE' if vat[:2] == 'DK' else 'ZZZ'
-            },
-            'cac:TaxScheme': {
-                'cbc:ID': {
-                    '_text': 63,
-                    'schemeID': 'urn:oioubl:id:taxschemeid-1.5',
+        if vat and vat != '/':
+            party_node['cac:PartyTaxScheme'].update({
+                # Only DK:SE for PartyTaxScheme https://oioubl21.oioubl.dk/Classes/da/PartyTaxScheme.html
+                'cbc:CompanyID': {
+                    '_text': vat,
+                    'schemeID': 'DK:SE' if vat[:2] == 'DK' else 'ZZZ'
                 },
-                'cbc:Name': {'_text': 'Moms'},
-            },
-        })
+                'cac:TaxScheme': {
+                    'cbc:ID': {
+                        '_text': 63,
+                        'schemeID': 'urn:oioubl:id:taxschemeid-1.5',
+                    },
+                    'cbc:Name': {'_text': 'Moms'},
+                },
+            })
         if partner.nemhandel_identifier_type and partner.nemhandel_identifier_value:
             prefix = 'DK' if partner.nemhandel_identifier_type == '0184' else ''
             party_node['cbc:EndpointID'] = {
                 '_text': f'{prefix}{partner.nemhandel_identifier_value}',
-                'schemeID': partner.nemhandel_identifier_type,
+                'schemeID': SCHEME_ID_MAPPING[partner.nemhandel_identifier_type],
             }
 
         return party_node
@@ -198,8 +206,9 @@ class AccountEdiXmlOIOUBL21(models.AbstractModel):
             ),
             'currencyID': vals['currency_name'],
         }
-        # PrepaidAmount must not be present if equal to 0 and is only filled with 0 in the parent method
-        document_node[monetary_total_tag]['cbc:PrepaidAmount'] = None
+        # PrepaidAmount must not be present if equal to 0
+        if document_node[monetary_total_tag].get('cbc:PrepaidAmount') and document_node[monetary_total_tag]['cbc:PrepaidAmount'].get('_text') == '0.00':
+            document_node[monetary_total_tag]['cbc:PrepaidAmount'] = None
 
     def _get_tax_category_node(self, vals):
         # EXTENDS account_edi_xml_ubl_20

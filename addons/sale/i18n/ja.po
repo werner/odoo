@@ -6,7 +6,7 @@
 # Ryoko Tsuda <ryoko@quartile.co>, 2024, 2025.
 # Junko Augias, 2025
 # Wil Odoo, 2025
-# "Junko Augias (juau)" <juau@odoo.com>, 2025.
+# "Junko Augias (juau)" <juau@odoo.com>, 2025, 2026.
 # Weblate <noreply-mt-weblate@weblate.org>, 2025.
 # Yoshi Tashiro <tashiro@quartile.co>, 2025.
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-29 18:37+0000\n"
-"PO-Revision-Date: 2025-12-26 14:00+0000\n"
+"PO-Revision-Date: 2026-01-24 09:13+0000\n"
 "Last-Translator: \"Junko Augias (juau)\" <juau@odoo.com>\n"
 "Language-Team: Japanese <https://translate.odoo.com/projects/odoo-18/sale/ja/"
 ">\n"
@@ -65,7 +65,7 @@ msgstr "&amp;nbsp;"
 #. module: sale
 #: model:ir.actions.report,print_report_name:sale.action_report_pro_forma_invoice
 msgid "'PRO-FORMA - %s' % (object.name)"
-msgstr "PRO-FORMA - %s' % (object.name)"
+msgstr "プロフォーマ - %s' % (object.name)"
 
 #. module: sale
 #: model:ir.actions.report,print_report_name:sale.action_report_saleorder
@@ -73,8 +73,8 @@ msgid ""
 "(object.state in ('draft', 'sent') and 'Quotation - %s' % (object.name)) or "
 "'Order - %s' % (object.name)"
 msgstr ""
-"(object.state in ('draft', 'sent') and 'Quotation - %s' % (object.name)) or "
-"'Order - %s' % (object.name)"
+"(object.state in ('draft', 'sent') and '見積 - %s' % (object.name)) or 'オー"
+"ダ - %s' % (object.name)"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.report_saleorder_document
@@ -1463,7 +1463,7 @@ msgstr "活動状態"
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order__activity_type_icon
 msgid "Activity Type Icon"
-msgstr "活動種別アイコン"
+msgstr "活動タイプアイコン"
 
 #. module: sale
 #: model:ir.actions.act_window,name:sale.mail_activity_type_action_config_sale
@@ -1607,7 +1607,7 @@ msgstr "請求対象見積金額"
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_advance_payment_inv__amount_to_invoice
 msgid "Amount to invoice"
-msgstr "請求金額"
+msgstr "請求予定金額"
 
 #. module: sale
 #: model_terms:ir.actions.act_window,help:sale.action_orders_upselling
@@ -1713,7 +1713,7 @@ msgstr "属性"
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order_cancel__author_id
 msgid "Author"
-msgstr "著作者"
+msgstr "作成者"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order__authorized_transaction_ids
@@ -2861,7 +2861,7 @@ msgstr "全額<br/>"
 #: model:ir.model.fields.selection,name:sale.selection__sale_report__line_invoice_status__invoiced
 #: model_terms:ir.ui.view,arch_db:sale.view_order_product_search
 msgid "Fully Invoiced"
-msgstr "完全請求済"
+msgstr "全額請求済"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_sales_order_filter
@@ -4803,9 +4803,8 @@ msgid ""
 "Sales order item to which the time spent will be added in order to be "
 "invoiced to your customer. Remove the sales order item for the timesheet "
 "entry to be non-billable."
-msgstr ""
-"顧客に請求するために、使用した時間を追加する販売オーダ項目。タイムシートエン"
-"トリーを請求不可にするには、販売オーダ項目を削除して下さい。"
+msgstr "顧客に請求するために、使用した時間を追加する販売オーダ項目。タイムシートエン"
+"トリーを非請求対象にするには、販売オーダ項目を削除して下さい。"
 
 #. module: sale
 #: model:ir.model.fields.selection,name:sale.selection__product_template__expense_policy__sales_price
@@ -4962,7 +4961,7 @@ msgid ""
 "content about a product (instructions, rules, links, media, etc.). Create "
 "and set the email template from the product detail form (in Accounting tab)."
 msgstr ""
-"プロダクトに関する特定の情報や内容（取扱説明、規則、リンク、メディア等）を"
+"プロダクトに関する特定の情報や内容（取扱説明、ルール、リンク、メディア等）を"
 "シェアしたい場合、メール配信が役立ちます。プロダクト詳細フォーム（会計タブ）"
 "から、Eメールテンプレートを作成してください。"
 
@@ -5106,12 +5105,12 @@ msgstr "いくつかのオーダは確認が必要なステータスにありま
 #: model:ir.model.fields,field_description:sale.field_sale_order__source_id
 #: model:ir.model.fields,field_description:sale.field_sale_report__source_id
 msgid "Source"
-msgstr "ソース"
+msgstr "参照元"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order__origin
 msgid "Source Document"
-msgstr "参照元"
+msgstr "参照元ドキュメント"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_res_config_settings__module_product_email_template
@@ -5139,7 +5138,7 @@ msgid ""
 "Planned: Future activities."
 msgstr ""
 "活動に基づくステータス\n"
-"遅延: 期限が既に過ぎています\n"
+"期限超過：期限日がすでに過ぎています\n"
 "今日: 活動日は今日です\n"
 "予定: 将来の活動。"
 
