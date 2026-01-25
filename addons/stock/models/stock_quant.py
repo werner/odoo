@@ -473,6 +473,7 @@ class StockQuant(models.Model):
                 }
         self._apply_inventory()
         self.inventory_quantity_set = False
+        return True
 
     def action_stock_quant_relocate(self):
         if len(self.company_id) > 1 or any(not q.company_id.id for q in self) or any(q <= 0 for q in self.mapped('quantity')):
